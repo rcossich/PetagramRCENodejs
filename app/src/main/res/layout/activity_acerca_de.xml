@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:isScrollContainer="true"
+    android:scrollIndicators="top|bottom"
+    tools:context="com.example.rcossich.petagramrcenodejs.AcercaDe">
+
+    <include
+        android:id="@+id/miActionBar"
+        layout="@layout/actionbar"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/miActionBar"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivBiografia"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_botones"
+            android:gravity="fill_vertical"
+            android:src="@drawable/pet_footprint" />
+
+        <TextView
+            android:id="@+id/tvBiografia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ayuda_biografia"
+            android:text="Ricardo" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvBiografia"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/separa_boton"
+            android:onClick="enterado"
+            android:text="@string/contenido_boton2" />
+    </LinearLayout>
+
+</RelativeLayout>

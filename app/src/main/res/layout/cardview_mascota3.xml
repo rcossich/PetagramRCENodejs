@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvMascota2"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/alto_tarjeta"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    card_view:cardCornerRadius="@dimen/corner_radius_cardview"
+    >
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/glFragment"
+        android:columnCount="3"
+        >
+        <LinearLayout
+            android:layout_width="@dimen/ancho_3tarjetas"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/imgFoto3"
+                android:layout_height="@dimen/alto_foto"
+                android:layout_width="match_parent"
+                android:src="@drawable/dog_pet_01"
+                >
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_botones"
+                android:foregroundTint="@color/cardview_dark_background"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:id="@+id/tvLikes3"
+                    android:text="@string/nlikes"
+                    android:textSize="@dimen/letra_nombre"
+                    android:textAlignment="center"
+                    />
+                <ImageView
+                    android:id="@+id/ivTlikes3"
+                    android:layout_width="@dimen/boton_size"
+                    android:layout_height="@dimen/boton_size"
+                    android:src="@drawable/hueso_amarillo"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+    </GridLayout>
+</android.support.v7.widget.CardView>

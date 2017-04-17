@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="alto_tarjeta">250dp</dimen>
+    <dimen name="alto_foto">170dp</dimen>
+    <dimen name="ancho_nombre">196dp</dimen>
+    <dimen name="letra_nombre">26dp</dimen>
+    <dimen name="elevacion_actionbar">4dp</dimen>
+    <dimen name="corner_radius_cardview">4dp</dimen>
+    <dimen name="boton_size">35dp</dimen>
+    <dimen name="layout_botones">65dp</dimen>
+    <dimen name="altura_campo_correo">170dp</dimen>
+    <dimen name="separa_boton">10dp</dimen>
+    <dimen name="ancho_3tarjetas">130dp</dimen>
+    <dimen name="imagen_circular">200dp</dimen>
+    <dimen name="ancho_2tarjetas">170dp</dimen>
+    <dimen name="letra_nombre_grid">12dp</dimen>
+    <dimen name="ancho_detalle_mascota">350dp</dimen>
+    <dimen name="alto_detalle_mascota">380dp</dimen>
+    <dimen name="tamanio_foto_mascota_detalle">320dp</dimen>
+    <dimen name="tamanio_letra_likes_detalle">30dp</dimen>
+    <dimen name="tamanio_hueso_likes_detalle">50dp</dimen>
+
+</resources>

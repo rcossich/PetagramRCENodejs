@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rcossich.petagramrcenodejs.fragmento.PerfilMascota">
+
+    <include android:id="@+id/miActionBar"
+        layout="@layout/actionbar"
+        >
+    </include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/miActionBar"
+        android:orientation="vertical"
+        >
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:layout_height="@dimen/imagen_circular"
+            android:layout_width="@dimen/imagen_circular"
+            android:id="@+id/civMascota"
+            android:layout_below="@id/miActionBar"
+            android:layout_gravity="center"
+            android:src="@drawable/dog_pet_06"
+            app:civ_border_color="#EEEEEE"
+            app:civ_border_width="4dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="10"
+            app:civ_shadow_color="#8BC34A"
+            >
+        </com.mikhaellopez.circularimageview.CircularImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="@dimen/boton_size"
+            android:text="Mascota"
+            />
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rvMascotas3"
+            android:layout_below="@id/civMascota"
+            >
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</RelativeLayout>

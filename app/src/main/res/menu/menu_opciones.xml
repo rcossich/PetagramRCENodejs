@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/mContacto"
+        android:title="@string/menu_contacto"
+        android:orderInCategory="100"
+        >
+    </item>
+    <item
+        android:id="@+id/mAcerca"
+        android:title="@string/menu_acerca"
+        android:orderInCategory="101"
+        >
+    </item>
+
+    <item
+        android:id="@+id/mFavoritos"
+        android:title="@string/menu_favoritos"
+        android:orderInCategory="102"
+        app:showAsAction="always"
+        android:icon="@drawable/estrella_cinco"
+        >
+    </item>
+    <item
+        android:id="@+id/mBorrarLikes"
+        android:title="@string/menu_blikes"
+        android:orderInCategory="103"
+        >
+    </item>
+    <item
+        android:id="@+id/mTimeLine"
+        android:title="@string/menu_timeline"
+        android:orderInCategory="104"
+        >
+    </item>
+    <item
+        android:id="@+id/mUsuario"
+        android:title="@string/menu_usuario"
+        android:orderInCategory="105"
+        >
+    </item>
+
+</menu>
