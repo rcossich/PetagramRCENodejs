@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "23587218788",
+    "firebase_url": "https://petragramrcenodejs.firebaseio.com",
+    "project_id": "petragramrcenodejs",
+    "storage_bucket": "petragramrcenodejs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23587218788:android:153d54a5135cd95a",
+        "android_client_info": {
+          "package_name": "com.example.ricardocossich.petagramrcenodejs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "23587218788-abjurnrn751q662jaqccmmbfh5kgohqs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ricardocossich.petagramrcenodejs",
+            "certificate_hash": "0963b2771f656244c7fb71ec378801a50a8b44ef"
+          }
+        },
+        {
+          "client_id": "23587218788-rqn9tpopdpop9aio258ks2sqv2hrne2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8sRahKnRK0TIvJgiPIekz5-F32v_1c8E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "23587218788-rqn9tpopdpop9aio258ks2sqv2hrne2a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

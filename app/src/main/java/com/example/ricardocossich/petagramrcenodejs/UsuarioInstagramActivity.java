@@ -15,11 +15,11 @@ public class UsuarioInstagramActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_instagram);
-        Log.i("onCreate cuenta"," finalizando");
+        Log.d("onCreate cuenta"," finalizando");
     }
 
     public void guardarcuenta(View v) {
-        Log.i("guardarcuenta"," Entrando");
+        Log.d("guardarcuenta"," Entrando");
         etUsuario = (EditText) findViewById(R.id.etUsuario);
         String usuarioinstagram = etUsuario.getText().toString();
         if (usuarioinstagram== null || usuarioinstagram.isEmpty()) {
@@ -28,7 +28,7 @@ public class UsuarioInstagramActivity extends AppCompatActivity {
             //llamar a activity_main pasando parametros
             Intent myIntent = new Intent(getBaseContext(), MainActivity.class); //en luagar de Intent intent = new Intent(this, MainActivity.class);
             myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            Log.i("De regreso a Main","pasanado "+usuarioinstagram);
+            Log.d("De regreso a Main","pasando "+usuarioinstagram);
             myIntent.putExtra("cuenta_instagram", usuarioinstagram);
             startActivity(myIntent);
 

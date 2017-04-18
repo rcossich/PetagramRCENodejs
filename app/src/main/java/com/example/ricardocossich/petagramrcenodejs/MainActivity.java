@@ -19,17 +19,21 @@ import com.example.ricardocossich.petagramrcenodejs.db.BaseDatos;
 import com.example.ricardocossich.petagramrcenodejs.fragmento.FragmentMascota;
 import com.example.ricardocossich.petagramrcenodejs.fragmento.FragmentPetagram;
 import com.example.ricardocossich.petagramrcenodejs.fragmento.PerfilMascota;
-
-
-
+import com.google.firebase.iid.FirebaseInstanceId;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String token_tablet_AOC = "djU9b5izw3g:APA91bHdTAqx-IVBkryFJ-46lBy4TqnzD8-h84GoIo0sKNzt2evOqq2Hh7KXYIHgsoZBdeccJnPMhRuM_m5uQBFR4uXhcr2kRrqk6-pnxsrNVv6lGrZq_YDOxEZqfSjlPFnnGzvHQm0Y";
+    private static final String token_emulator_nexus_5_api_24_PC_rcossich_santaana = "fqES8mbc3GM:APA91bEjmoC7yoORQBvUINjDQwjOkj3mzWY1Zqi_76KZATenYc49pZ8dXqFioePmly7-IhQDVW3uTQfxhb4k3SWiSB5t4S1h66e2pArWpIV53LIOgDjRTSjCw0Vnob6BM1MOAv67dV53";
+                                                                                    //fqES8mbc3GM:APA91bEjmoC7yoORQBvUINjDQwjOkj3mzWY1Zqi_76KZATenYc49pZ8dXqFioePmly7-IhQDVW3uTQfxhb4k3SWiSB5t4S1h66e2pArWpIV53LIOgDjRTSjCw0Vnob6BM1MOAv67dV53
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     public static String cuentaInstagram;
+    public static String idUsuarioInstagram;
+    public static String cuentaInstagramInvitado;
+    public static String idUsuarioInstagramInvitado;
 
 
     @Override
@@ -40,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar   = (Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        //dejamos fija la cuenta del usuario instagram invitado (para el timeline).
+        cuentaInstagramInvitado = "ricardoescobar1783";
 
         Bundle extras = getIntent().getExtras();
 
@@ -54,11 +61,18 @@ public class MainActivity extends AppCompatActivity {
             cuentaInstagram = "ricardo.cossich";
         }
 
+
+
         setUpViewPager();
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
+
+        //viendo el token del dispositivo en FireBase
+        String token2 = FirebaseInstanceId.getInstance().getToken();
+        Log.d("TOKEN_INICIO",token2);
+        enviarTokenRegistro("Desde inicio",token2);
 
     }
 
@@ -96,6 +110,18 @@ public class MainActivity extends AppCompatActivity {
                 Intent l = new Intent(this,UsuarioInstagramActivity.class);
                 startActivity(l);
                 break;
+            case R.id.mTokenID:
+                String token = FirebaseInstanceId.getInstance().getToken();
+                Log.d("TOKEN",token);
+                enviarTokenRegistro("Desde menu",token);
+                break;
+
+            case R.id.mRecibeNotificaciones:
+                String token1 = FirebaseInstanceId.getInstance().getToken();
+                Log.d("TOKEN",token1);
+                enviarTokenRegistro("En Recibe notif.",token1);
+                insertaRegistroFirebase(token1,cuentaInstagram);
+                break;
 
         }
         return super.onOptionsItemSelected(item);
@@ -123,5 +149,12 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,"Se han borrado los likes de las mascotas.",Toast.LENGTH_LONG).show();
     }
 
+    private void enviarTokenRegistro(String donde,String token) {
 
+        Log.d(donde,token);
+    }
+
+    private void insertaRegistroFirebase(String id_dispositivo,String id_usuario_instagram) {
+
+    }
 }

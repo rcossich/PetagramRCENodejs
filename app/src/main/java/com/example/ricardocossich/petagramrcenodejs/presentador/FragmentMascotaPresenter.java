@@ -92,14 +92,15 @@ public class FragmentMascotaPresenter  implements IFragmentMascotaPresenter {
                         //Toast.makeText(getBaseContext(),"Tamaño de la respuesta"+usuarios.size(),Toast.LENGTH_LONG).show();
                         for (int i = 0; i < usuarios.size(); i++) {
                             //Toast.makeText(getBaseContext(),"ID: "+i+">>"+usuarios.get(i).getId(),Toast.LENGTH_LONG).show();
-                            Log.i("ID del usuario", usuarios.get(i).getId());
-                            Log.i("Nombre del usuario", usuarios.get(i).getUsername());
-                            Log.i("Direccion foto perfil", usuarios.get(i).getProfile_picture_url());
+                            Log.d("ID del usuario", usuarios.get(i).getId());
+                            Log.d("Nombre del usuario", usuarios.get(i).getUsername());
+                            Log.d("Direccion foto perfil", usuarios.get(i).getProfile_picture_url());
                         }
-                        Log.i("Final", "Saliendo de obtener datos de busqueda");
+                        Log.d("Final", "Saliendo de obtener datos de busqueda");
                         idusuario =usuarios.get(0).getId();
-                        Toast.makeText(context,"se recupera id "+idusuario+" para "+nombreusuario,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(context,"se recupera id "+idusuario+" para "+nombreusuario,Toast.LENGTH_LONG).show();
                         obtenerMediosRecientes(idusuario);
+                        MainActivity.idUsuarioInstagram = idusuario;
                     } else {
                         Toast.makeText(context,"No pude recuperar el id del usuario: "+nombreusuario,Toast.LENGTH_LONG).show();
                     }

@@ -26,7 +26,7 @@ import retrofit2.Response;
 
 public class TimeLineActivity extends AppCompatActivity {
 
-    private ArrayList<MascotaInstagram> mascotas5=new ArrayList<MascotaInstagram>();;
+    private ArrayList<MascotaInstagram> mascotas5=new ArrayList<MascotaInstagram>();
     private RecyclerView listaMascotas5;
     private ArrayList<InformacionUsuario> usuarios=new ArrayList<InformacionUsuario>();
     private String usuarioid;
@@ -52,12 +52,12 @@ public class TimeLineActivity extends AppCompatActivity {
     public void inicializarListaMascotas5(String pusuario) {
 
         String usuarioid = pusuario;
-        Log.i("antes crear restApi2"," antes");
+        Log.d("antes crear restApi2"," antes");
         RestApiAdapter restApiAdapter2 = new RestApiAdapter();
-        Log.i("antes crear de-serial"," antes");
+        Log.d("antes crear de-serial"," antes");
         Gson gsonMediaRecent2 = restApiAdapter2.construyeGsonDeserializadorMediaRecent();
         IEndpointsApi endpointsApi2 = restApiAdapter2.establecerConexionRestApiInstagram(gsonMediaRecent2);
-        Log.i("antes call gRMUI"," usuarios?: ");
+        Log.d("antes call gRMUI"," usuarios?: ");
         Call<MascotaResponse> mascotaResponseCall = endpointsApi2.getRecentMediaUserId(usuarioid);
 
         mascotaResponseCall.enqueue(new Callback<MascotaResponse>() {
@@ -98,11 +98,11 @@ public class TimeLineActivity extends AppCompatActivity {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Gson gsonListaUsuarios = restApiAdapter.construyeGsonDeserializadorBusquedaUsuarios();
         IEndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonListaUsuarios);
-        Log.i("Mandando ",ConstantesRestApi.KEY_USUARIOS[0]);
+        Log.d("Mandando ",MainActivity.cuentaInstagramInvitado);
 
         final String usuario_alterno = "uefachampionsleague";
         //Call<InformacionUsuarioResponse> informacionusuarioResponseCall = endpointsApi.getUsuariosBusqueda(usuario_alterno);
-        Call<InformacionUsuarioResponse> informacionusuarioResponseCall = endpointsApi.getUsuariosBusqueda(ConstantesRestApi.KEY_USUARIOS[0]);
+        Call<InformacionUsuarioResponse> informacionusuarioResponseCall = endpointsApi.getUsuariosBusqueda(MainActivity.cuentaInstagramInvitado);
 
         informacionusuarioResponseCall.enqueue(new Callback<InformacionUsuarioResponse>(){
             @Override
@@ -116,12 +116,13 @@ public class TimeLineActivity extends AppCompatActivity {
                         //Toast.makeText(getBaseContext(),"Tamaño de la respuesta"+usuarios.size(),Toast.LENGTH_LONG).show();
                         for (int i = 0; i < usuarios.size(); i++) {
                             //Toast.makeText(getBaseContext(),"ID: "+i+">>"+usuarios.get(i).getId(),Toast.LENGTH_LONG).show();
-                            Log.i("ID del usuario", usuarios.get(i).getId());
-                            Log.i("Nombre del usuario", usuarios.get(i).getUsername());
-                            Log.i("Direccion foto perfil", usuarios.get(i).getProfile_picture_url());
+                            Log.d("ID del usuario", usuarios.get(i).getId());
+                            Log.d("Nombre del usuario", usuarios.get(i).getUsername());
+                            Log.d("Direccion foto perfil", usuarios.get(i).getProfile_picture_url());
                         }
-                        Log.i("Final", "Saliendo de obtener datos de busqueda");
+                        Log.d("Final", "Saliendo de obtener datos de busqueda");
                         usuarioid=usuarios.get(0).getId();
+                        MainActivity.idUsuarioInstagramInvitado = usuarioid;
                         inicializarListaMascotas5(usuarioid);
                     } else {
                         Toast.makeText(getBaseContext(),"No pude recuperar el id de alguno de estos usuarios: "+usuario_alterno+","+ConstantesRestApi.KEY_USUARIOS[0],Toast.LENGTH_LONG).show();

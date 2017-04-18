@@ -41,5 +41,18 @@
         android:orderInCategory="105"
         >
     </item>
+    <item
+        android:id="@+id/mTokenID"
+        android:title="@string/menu_token"
+        android:orderInCategory="106"
+        >
+    </item>
+
+    <item
+        android:id="@+id/mRecibeNotificaciones"
+        android:title="@string/menu_notificaciones"
+        android:orderInCategory="107"
+        >
+    </item>
 
 </menu>
