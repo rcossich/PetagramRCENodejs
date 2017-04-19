@@ -60,13 +60,15 @@ public class MainActivity extends AppCompatActivity {
 
         if (extras != null) {
             Log.i("En main"," con parametros");
-            Toast.makeText(this,"Con parametros en main",Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,"Con parametros en main",Toast.LENGTH_LONG).show();
             String cuentaRecupera  = extras.getString("cuenta_instagram");
             cuentaInstagram = cuentaRecupera;
         } else {
             Log.i("Main sin"," parametros");
-            Toast.makeText(this,"Sin parametros en main",Toast.LENGTH_LONG).show();
-            cuentaInstagram = "ricardo.cossich";
+            //Toast.makeText(this,"Sin parametros en main",Toast.LENGTH_LONG).show();
+            if (cuentaInstagram.isEmpty()) {
+                cuentaInstagram = "ricardo.cossich";
+            }
         }
 
 
@@ -114,9 +116,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent k = new Intent(this,TimeLineActivity.class);
                 startActivity(k);
                 break;
-            case R.id.mUsuario:
-                Intent l = new Intent(this,UsuarioInstagramActivity.class);
+            case R.id.mUsuarioTL:
+                Intent l = new Intent(this,UsuarioTimeLine.class);
                 startActivity(l);
+                break;
+            case R.id.mUsuario:
+                Intent m = new Intent(this,UsuarioInstagramActivity.class);
+                startActivity(m);
                 break;
             case R.id.mTokenID:
                 String token = FirebaseInstanceId.getInstance().getToken();
@@ -160,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
     private void enviarTokenRegistro(String donde,String token) {
 
         Log.d(donde,token);
+        Toast.makeText(this,"Se obtuvo el siguiente Id de dispositivo: "+token,Toast.LENGTH_LONG).show();
     }
 
     private void insertaRegistroFirebase(String id_dispositivo,String id_usuario_instagram) {

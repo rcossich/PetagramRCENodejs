@@ -42,16 +42,23 @@
         >
     </item>
     <item
+        android:id="@+id/mUsuarioTL"
+        android:title="@string/menu_usuarioTL"
+        android:orderInCategory="106"
+        >
+    </item>
+
+    <item
         android:id="@+id/mTokenID"
         android:title="@string/menu_token"
-        android:orderInCategory="106"
+        android:orderInCategory="107"
         >
     </item>
 
     <item
         android:id="@+id/mRecibeNotificaciones"
         android:title="@string/menu_notificaciones"
-        android:orderInCategory="107"
+        android:orderInCategory="108"
         >
     </item>
 

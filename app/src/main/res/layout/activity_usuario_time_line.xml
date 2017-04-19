@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ricardocossich.petagramrcenodejs.UsuarioInstagramActivity">
+    tools:context="com.example.ricardocossich.petagramrcenodejs.UsuarioTimeLine">
 
     <include android:id="@+id/miActionBar"
         layout="@layout/actionbar"
@@ -19,24 +19,23 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="Petagram"
+            android:text="PetagramNodejs"
             android:textSize="36dp"
             android:textAlignment="center"/>
         <EditText
-            android:id="@+id/etUsuario"
+            android:id="@+id/etUsuario22"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/ayuda_nombre_usuario"/>
         <Button
-            android:id="@+id/btEnvio2"
+            android:id="@+id/btEnvio22"
             android:layout_marginTop="@dimen/separa_boton"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="guardarcuenta"
-            android:layout_below="@id/etUsuario"
-            android:text="@string/contenido_boton3"/>
+            android:onClick="guardarcuenta2"
+            android:layout_below="@id/etUsuario22"
+            android:text="@string/contenido_boton4"/>
     </LinearLayout>
 
 </RelativeLayout>
-

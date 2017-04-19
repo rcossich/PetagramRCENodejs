@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:isScrollContainer="true"
     android:scrollIndicators="top|bottom"
-    tools:context="com.example.rcossich.petagramrcenodejs.AcercaDe">
+    tools:context="com.example.ricardocossich.petagramrcenodejs.AcercaDe">
 
     <include
         android:id="@+id/miActionBar"
