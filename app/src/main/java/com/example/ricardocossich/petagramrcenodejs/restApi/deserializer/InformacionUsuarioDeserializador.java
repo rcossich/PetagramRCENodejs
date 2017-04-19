@@ -40,16 +40,16 @@ public class InformacionUsuarioDeserializador implements JsonDeserializer<Inform
 
         for (int i = 0; i < informacionusuarioResponseData.size() ; i++) {
             JsonObject informacionusuarioResponseDataObject = informacionusuarioResponseData.get(i).getAsJsonObject();
-            Log.e("Recorriendo"+i+ "de"+informacionusuarioResponseData.size(),informacionusuarioResponseDataObject.toString());
-            Log.e("Es Arreglo", String.valueOf(informacionusuarioResponseDataObject.isJsonArray()));
-            Log.e("Es Objeto", String.valueOf(informacionusuarioResponseDataObject.isJsonObject()));
-            Log.e("Es Primitiva", String.valueOf(informacionusuarioResponseDataObject.isJsonPrimitive()));
-            Log.e("Es Nulo", String.valueOf(informacionusuarioResponseDataObject.isJsonNull()));
-            Log.e("Que tipo es ",JsonKeys.USERNAME);
+            Log.d("Recorriendo"+i+ "de"+informacionusuarioResponseData.size(),informacionusuarioResponseDataObject.toString());
+            Log.d("Es Arreglo", String.valueOf(informacionusuarioResponseDataObject.isJsonArray()));
+            Log.d("Es Objeto", String.valueOf(informacionusuarioResponseDataObject.isJsonObject()));
+            Log.d("Es Primitiva", String.valueOf(informacionusuarioResponseDataObject.isJsonPrimitive()));
+            Log.d("Es Nulo", String.valueOf(informacionusuarioResponseDataObject.isJsonNull()));
+            Log.d("Que tipo es ",JsonKeys.USERNAME);
             if (informacionusuarioResponseDataObject.get(JsonKeys.USERNAME).isJsonObject()||informacionusuarioResponseDataObject.get(JsonKeys.USERNAME).isJsonArray())
             {
                 JsonObject userJson     = informacionusuarioResponseDataObject.getAsJsonObject(JsonKeys.USERNAME);
-                Log.e("Es objeto"+JsonKeys.USERNAME,""+userJson);
+                Log.d("Es objeto"+JsonKeys.USERNAME,""+userJson);
 
                 id               = userJson.get(JsonKeys.USER_ID).getAsString();
                 userName         = userJson.get(JsonKeys.USERNAME).getAsString();
@@ -58,7 +58,7 @@ public class InformacionUsuarioDeserializador implements JsonDeserializer<Inform
             if (informacionusuarioResponseDataObject.get(JsonKeys.USERNAME).isJsonPrimitive())
             {
                 JsonPrimitive userJson = informacionusuarioResponseDataObject.getAsJsonPrimitive(JsonKeys.USERNAME);
-                Log.e("Primitiva Json"+JsonKeys.USERNAME,""+userJson);
+                Log.d("Primitiva Json"+JsonKeys.USERNAME,""+userJson);
 
                 id               = informacionusuarioResponseDataObject.getAsJsonPrimitive(JsonKeys.USER_ID).getAsString();
                 userName         = informacionusuarioResponseDataObject.getAsJsonPrimitive(JsonKeys.USERNAME).getAsString();

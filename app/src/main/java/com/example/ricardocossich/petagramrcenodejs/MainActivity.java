@@ -19,7 +19,15 @@ import com.example.ricardocossich.petagramrcenodejs.db.BaseDatos;
 import com.example.ricardocossich.petagramrcenodejs.fragmento.FragmentMascota;
 import com.example.ricardocossich.petagramrcenodejs.fragmento.FragmentPetagram;
 import com.example.ricardocossich.petagramrcenodejs.fragmento.PerfilMascota;
+import com.example.ricardocossich.petagramrcenodejs.restApi.IEndpointsHeroku;
+import com.example.ricardocossich.petagramrcenodejs.restApi.adapter.RestApiAdapter;
+import com.example.ricardocossich.petagramrcenodejs.restApi.adapter.RestApiHerokuAdapter;
+import com.example.ricardocossich.petagramrcenodejs.restApi.model.RegistraUsuarioResponse;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -156,5 +164,25 @@ public class MainActivity extends AppCompatActivity {
 
     private void insertaRegistroFirebase(String id_dispositivo,String id_usuario_instagram) {
 
+        RestApiHerokuAdapter restApiHerokuAdapter = new RestApiHerokuAdapter();
+        IEndpointsHeroku iEndpointsHeroku = restApiHerokuAdapter.establecerConexionRestAPIHeroku();
+        Call<RegistraUsuarioResponse> registraUsuarioResponseCall = iEndpointsHeroku.registrarUsuario(id_dispositivo,id_usuario_instagram);
+
+        registraUsuarioResponseCall.enqueue(new Callback<RegistraUsuarioResponse>() {
+
+            @Override
+            public void onResponse(Call<RegistraUsuarioResponse> call, Response<RegistraUsuarioResponse> response) {
+                RegistraUsuarioResponse registraUsuarioResponse = response.body();
+                Log.d("ID_FIREBASE_DB", registraUsuarioResponse.getId());
+                Log.d("ID_DISPOSITIVO", registraUsuarioResponse.getId_dispositivo());
+                Log.d("ID_USUARIO_INSTAGRAM", registraUsuarioResponse.getId_usuario_instagram());
+            }
+
+            @Override
+
+            public void onFailure(Call<RegistraUsuarioResponse> call, Throwable t) {
+            }
+
+        });
     }
 }

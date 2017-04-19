@@ -4,7 +4,7 @@ package com.example.ricardocossich.petagramrcenodejs.restApi;
  * Created by rcossich on 29/03/2017.
  */
 
-public class ConstantesRestApi {
+public final class ConstantesRestApi {
 
     // tokens de dos usuarios especificos.
     public static final String ACCESS_TOKEN = "4868559439.f49691f.e81df5983b2644358b07a19111976c0c"; //con todos los permisos para ricardo.cossich.
@@ -34,4 +34,8 @@ public class ConstantesRestApi {
     public static final String URL_GET_USERS_QUERY0 = KEY_USER_SEARCH+KEY_USUARIO_BUSCAR0+KEY_ACCESS_TOKEN2+ACCESS_TOKEN;
     public static final String URL_GET_USERS_QUERY1 = KEY_USER_SEARCH+KEY_USUARIO_BUSCAR1+KEY_ACCESS_TOKEN2+ACCESS_TOKEN;
 
+
+    //PARA LA PARTE DE HEROKU.
+    public static final String ROOT_URL_HEROKU = "https://whispering-cliffs-37590.herokuapp.com/";
+    public static final String KEY_POST_REGISTRA_USUARIO = "registrar-usuario/";
 }
