@@ -7,6 +7,7 @@ package com.example.ricardocossich.petagramrcenodejs.modelo;
 public class MascotaInstagram {
     private String id;
     private String nombreCompleto;
+    private String media_id;
     private String urlFoto;
     private int likes = 0;
 
@@ -36,6 +37,10 @@ public class MascotaInstagram {
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
+
+    public String getMedia_id() { return media_id; }
+
+    public void setMedia_id(String media_id) { this.media_id = media_id; }
 
     public String getUrlFoto() {
         return urlFoto;

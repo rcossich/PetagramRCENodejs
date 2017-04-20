@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("PRIMERA"," En primera linea de Main");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

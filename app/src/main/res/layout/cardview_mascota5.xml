@@ -25,7 +25,12 @@
             android:layout_height="@dimen/layout_botones"
             android:foregroundTint="@color/cardview_dark_background"
             android:orientation="horizontal">
-
+            <ImageButton
+                android:id="@+id/btLike05"
+                android:layout_width="@dimen/boton_size"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_action_name"
+                />
             <TextView
                 android:layout_width="@dimen/ancho_nombre"
                 android:layout_height="match_parent"
