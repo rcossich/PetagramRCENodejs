@@ -6,6 +6,7 @@ package com.example.ricardocossich.petagramrcenodejs.restApi;
 
 public class JsonKeys {
 
+    //para la parte de INSTAGRAM.
     public static final String MEDIA_RESPONSE_ARRAY         = "data";
     public static final String USER                         = "user";
     public static final String USER_ID                      = "id";
@@ -21,4 +22,14 @@ public class JsonKeys {
     public static final String USERNAME                     = "username";
     public static final String PROFILE_PICTURE_URL          = "profile_picture";
 
+    // para la parte de HEROKU.
+    public static final String META                         = "meta";
+    public static final String CODIGO                       = "code";
+    public static final String TIPO_ERROR                   = "error_type";
+    public static final String MENSAJE_ERROR                = "error_message";
+    public static final int    CODIGO_OK                    = 200;
+
+    //para la parte de Firebase.
+    public static final String ID_DISPOSITIVO               = "id_dispositivo";
+    public static final String ID_USUARIO_INSTAGRAM         = "id_usuario_instagram";
 }

@@ -2,6 +2,7 @@ package com.example.ricardocossich.petagramrcenodejs.adaptador;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,19 @@ import android.widget.Toast;
 
 import com.example.ricardocossich.petagramrcenodejs.R;
 import com.example.ricardocossich.petagramrcenodejs.modelo.MascotaInstagram;
+import com.example.ricardocossich.petagramrcenodejs.restApi.ConstantesRestApi;
+import com.example.ricardocossich.petagramrcenodejs.restApi.IEndpointsApi;
+import com.example.ricardocossich.petagramrcenodejs.restApi.JsonKeys;
+import com.example.ricardocossich.petagramrcenodejs.restApi.adapter.RestApiAdapter;
+import com.example.ricardocossich.petagramrcenodejs.restApi.model.LikeResponse;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by rcossich on 03/04/2017.
@@ -51,7 +62,42 @@ public class MediaInstagramAdaptador extends RecyclerView.Adapter<MediaInstagram
         mediaInstagramViewHolder.btLike05.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity,"Has dado like a "+publicacion.getMedia_id(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity,"Has dado like a "+publicacion.getMedia_id()+" del usuario "+publicacion.getId(),Toast.LENGTH_SHORT).show();
+                //aqui va el RESTFUL POST de like hacia instagram
+                RestApiAdapter restApiAdapter = new RestApiAdapter();
+                Gson gsonLikeMedia = restApiAdapter.construyeGsonDeserializadorDarLike();
+                IEndpointsApi endpointsApi = restApiAdapter.establecerConexionRestApiInstagram(gsonLikeMedia);
+                final Call<LikeResponse> likeResponseCall = endpointsApi.postLikeInstagram(publicacion.getMedia_id(), ConstantesRestApi.ACCESS_TOKEN);
+
+                likeResponseCall.enqueue(new Callback<LikeResponse>() {
+                    @Override
+                    public void onResponse(Call<LikeResponse> call, Response<LikeResponse> response) {
+                        LikeResponse informacionrespuestalike = response.body();
+                        if (informacionrespuestalike.getCodigo()!= JsonKeys.CODIGO_OK) {
+                            Log.e("ERROR_DE_LIKE","Codigo: "+informacionrespuestalike.getCodigo());
+                            Log.e("TIPO_ERROR LIKE",informacionrespuestalike.getTipo_error());
+                            Log.e("MENSAJE_ERROR_LIKE",informacionrespuestalike.getMensaje_error());
+                        } else {
+                            //aqui debo de insertar el like en la base de datos de firebase y programar la notificacion.
+                            //por complejidades con Heroku que no se pudieron resolver, vamos a
+                            // 1} Por medio de un GET a FireBase recuperaremos el id_dispositivo (solo uno), del dueño de la media que recibe el like.
+                            // 2) Mandamos con un POST a Heroku a registrar el like enviando el id_dispositivo
+                            // 3) Heroku se encarga de enviar la notificacion al dispositivo.
+
+                            //Implementacion:
+                            // 1) Por medio de un GET a FireBase recuperaremos el id_dispositivo (solo uno), del dueño de la media que recibe el like.
+                            // OJO: Este GET se puede hacer asi ya que la base de datos no tieme restricciones de permisos actualmente.
+                            // caso contrario se tendria que implementar el acceso desde aca, lo cual no es muy recomendable.
+                            // esto se implementa porque no pude resolverlo en Heroku.
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<LikeResponse> call, Throwable t) {
+                        Log.e("FALLO LA CONEXION2", t.toString());
+                    }
+                });
 
             }
 

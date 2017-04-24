@@ -7,8 +7,6 @@ package com.example.ricardocossich.petagramrcenodejs.restApi.model;
 public class RegistraUsuarioResponse {
 
     private String id;
-
-
     private String id_dispositivo;
     private String id_usuario_instagram;
 

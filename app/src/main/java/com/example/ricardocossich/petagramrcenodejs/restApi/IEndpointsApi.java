@@ -1,10 +1,14 @@
 package com.example.ricardocossich.petagramrcenodejs.restApi;
 
 import com.example.ricardocossich.petagramrcenodejs.restApi.model.InformacionUsuarioResponse;
+import com.example.ricardocossich.petagramrcenodejs.restApi.model.LikeResponse;
 import com.example.ricardocossich.petagramrcenodejs.restApi.model.MascotaResponse;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -27,5 +31,10 @@ public interface IEndpointsApi {
     //aca probamos la recent media con user-id
     @GET(ConstantesRestApi.URL_GET_RECENT_MEDIA_USER2)
     Call<MascotaResponse> getRecentMediaUserId(@Path("userid") String usuario_id);
+
+    //para el POST del LIKE
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_POST_LIKE)
+    Call<LikeResponse> postLikeInstagram(@Path("media-id") String id_media_instagram,@Field("access_token") String access_token);
 
 }

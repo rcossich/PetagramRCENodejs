@@ -34,8 +34,16 @@ public final class ConstantesRestApi {
     public static final String URL_GET_USERS_QUERY0 = KEY_USER_SEARCH+KEY_USUARIO_BUSCAR0+KEY_ACCESS_TOKEN2+ACCESS_TOKEN;
     public static final String URL_GET_USERS_QUERY1 = KEY_USER_SEARCH+KEY_USUARIO_BUSCAR1+KEY_ACCESS_TOKEN2+ACCESS_TOKEN;
 
+    //POST del like
+    public static final String URL_POST_LIKE = "media/{media-id}/likes";
+
+
 
     //PARA LA PARTE DE HEROKU.
     public static final String ROOT_URL_HEROKU = "https://whispering-cliffs-37590.herokuapp.com/";
     public static final String KEY_POST_REGISTRA_USUARIO = "registrar-usuario/";
+
+    //PARA LA PARTE de FIREBASE.
+    public static final String ROOT_URL_FIREBASE = "https://petragramrcenodejs.firebaseio.com/";
+    public static final String KEY_GET_REGISTRAR_USUARIO ="registrar-usuario.json";
 }
