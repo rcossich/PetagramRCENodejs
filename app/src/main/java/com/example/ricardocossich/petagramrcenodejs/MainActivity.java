@@ -80,11 +80,6 @@ public class MainActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
         }
 
-        //viendo el token del dispositivo en FireBase
-        String token2 = FirebaseInstanceId.getInstance().getToken();
-        Log.d("TOKEN_INICIO",token2);
-        enviarTokenRegistro("Desde inicio",token2);
-
     }
 
     @Override
@@ -127,15 +122,25 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.mTokenID:
                 String token = FirebaseInstanceId.getInstance().getToken();
-                Log.d("TOKEN",token);
-                enviarTokenRegistro("Desde menu",token);
+                if (token!=null){
+                    Log.d("TOKEN",token);
+                    enviarTokenRegistro("Desde menu",token);
+                } else {
+                    Log.e("SIN TOKEN","No se pudo recuperar token");
+                }
+
                 break;
 
             case R.id.mRecibeNotificaciones:
                 String token1 = FirebaseInstanceId.getInstance().getToken();
-                Log.d("TOKEN",token1);
-                enviarTokenRegistro("En Recibe notif.",token1);
-                insertaRegistroFirebase(token1,cuentaInstagram);
+                if (token1 != null) {
+                    Log.d("TOKEN",token1);
+                    enviarTokenRegistro("En Recibe notif.",token1);
+                    insertaRegistroFirebase(token1,cuentaInstagram);
+
+                } else {
+                    Log.e("NO TOKEN", "No puedes recibir notificaciones no pude obtener Token");
+                }
                 break;
 
         }
