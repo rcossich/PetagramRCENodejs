@@ -28,8 +28,4 @@ public class JsonKeys {
     public static final String TIPO_ERROR                   = "error_type";
     public static final String MENSAJE_ERROR                = "error_message";
     public static final int    CODIGO_OK                    = 200;
-
-    //para la parte de Firebase.
-    public static final String ID_DISPOSITIVO               = "id_dispositivo";
-    public static final String ID_USUARIO_INSTAGRAM         = "id_usuario_instagram";
 }

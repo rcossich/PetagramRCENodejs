@@ -11,13 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ricardocossich.petagramrcenodejs.MainActivity;
 import com.example.ricardocossich.petagramrcenodejs.R;
 import com.example.ricardocossich.petagramrcenodejs.modelo.MascotaInstagram;
 import com.example.ricardocossich.petagramrcenodejs.restApi.ConstantesRestApi;
 import com.example.ricardocossich.petagramrcenodejs.restApi.IEndpointsApi;
+import com.example.ricardocossich.petagramrcenodejs.restApi.IEndpointsHeroku;
 import com.example.ricardocossich.petagramrcenodejs.restApi.JsonKeys;
 import com.example.ricardocossich.petagramrcenodejs.restApi.adapter.RestApiAdapter;
+import com.example.ricardocossich.petagramrcenodejs.restApi.adapter.RestApiHerokuAdapter;
 import com.example.ricardocossich.petagramrcenodejs.restApi.model.LikeResponse;
+import com.example.ricardocossich.petagramrcenodejs.restApi.model.RegistraHerokuLikeResponse;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -73,23 +77,47 @@ public class MediaInstagramAdaptador extends RecyclerView.Adapter<MediaInstagram
                     @Override
                     public void onResponse(Call<LikeResponse> call, Response<LikeResponse> response) {
                         LikeResponse informacionrespuestalike = response.body();
-                        if (informacionrespuestalike.getCodigo()!= JsonKeys.CODIGO_OK) {
-                            Log.e("ERROR_DE_LIKE","Codigo: "+informacionrespuestalike.getCodigo());
-                            Log.e("TIPO_ERROR LIKE",informacionrespuestalike.getTipo_error());
-                            Log.e("MENSAJE_ERROR_LIKE",informacionrespuestalike.getMensaje_error());
-                        } else {
-                            //aqui debo de insertar el like en la base de datos de firebase y programar la notificacion.
-                            //por complejidades con Heroku que no se pudieron resolver, vamos a
-                            // 1} Por medio de un GET a FireBase recuperaremos el id_dispositivo (solo uno), del dueño de la media que recibe el like.
-                            // 2) Mandamos con un POST a Heroku a registrar el like enviando el id_dispositivo
-                            // 3) Heroku se encarga de enviar la notificacion al dispositivo.
+                        if (informacionrespuestalike!=null) {
+                            if (informacionrespuestalike.getCodigo()!= JsonKeys.CODIGO_OK) {
+                                Log.e("ERROR_DE_LIKE","Codigo: "+informacionrespuestalike.getCodigo());
+                                Log.e("TIPO_ERROR LIKE",informacionrespuestalike.getTipo_error());
+                                Log.e("MENSAJE_ERROR_LIKE",informacionrespuestalike.getMensaje_error());
+                            } else {
+                                //aqui debo de insertar el like en la base de datos de firebase y programar la notificacion.
+                                // 1) Mandamos con un POST a Heroku, en la respuesta viene el id_dispositivo que recibira
+                                //    la notificacion desde FCM por el like dado a su media (en caso este registrado algun dispositivo de ese id instagram).
 
-                            //Implementacion:
-                            // 1) Por medio de un GET a FireBase recuperaremos el id_dispositivo (solo uno), del dueño de la media que recibe el like.
-                            // OJO: Este GET se puede hacer asi ya que la base de datos no tieme restricciones de permisos actualmente.
-                            // caso contrario se tendria que implementar el acceso desde aca, lo cual no es muy recomendable.
-                            // esto se implementa porque no pude resolverlo en Heroku.
+                                //Implementacion:
+                                RestApiHerokuAdapter restApiHerokuAdapter = new RestApiHerokuAdapter();
+                                IEndpointsHeroku iEndpointsHeroku = restApiHerokuAdapter.establecerConexionRestAPIHeroku();
+                                Call<RegistraHerokuLikeResponse> registraHerokuLikeResponseCall = iEndpointsHeroku.registrarLike(publicacion.getId(),
+                                        publicacion.getMedia_id(), MainActivity.idUsuarioInstagram);
 
+                                registraHerokuLikeResponseCall.enqueue(new Callback<RegistraHerokuLikeResponse>() {
+
+                                    @Override
+                                    public void onResponse(Call<RegistraHerokuLikeResponse> call, Response<RegistraHerokuLikeResponse> response) {
+                                        RegistraHerokuLikeResponse registraHerokuLikeResponse = response.body();
+                                        Log.d("id FIREBASE",registraHerokuLikeResponse.getId());
+                                        Log.d("dispositivo FIREBASE",registraHerokuLikeResponse.getId_dispositivo()+"");
+                                        Log.d("dueño media",registraHerokuLikeResponse.getId_owner_instagram());
+                                        Log.d("ID media",registraHerokuLikeResponse.getId_media_instagram());
+                                        Log.d("ID usuario LIKE",registraHerokuLikeResponse.getId_sender_instagram());
+                                    }
+
+                                    @Override
+
+                                    public void onFailure(Call<RegistraHerokuLikeResponse> call, Throwable t) {
+                                        Log.e("ERROR",t.toString());
+                                    }
+
+                                });
+                            }
+
+                        } else { //el cuerpo de la respuesta venia vacio (like a instagram).
+                            if (response.errorBody()!= null) {
+                                Log.e("Error en Like",response.errorBody().toString());
+                            }
                         }
                     }
 

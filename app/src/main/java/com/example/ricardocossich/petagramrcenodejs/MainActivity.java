@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 if (token1 != null) {
                     Log.d("TOKEN",token1);
                     enviarTokenRegistro("En Recibe notif.",token1);
-                    insertaRegistroFirebase(token1,cuentaInstagram);
+                    insertaRegistroFirebase(token1,idUsuarioInstagram);
 
                 } else {
                     Log.e("NO TOKEN", "No puedes recibir notificaciones no pude obtener Token");
