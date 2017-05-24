@@ -63,11 +63,13 @@ public class MainActivity extends AppCompatActivity {
             Log.i("En main"," con parametros");
             //Toast.makeText(this,"Con parametros en main",Toast.LENGTH_LONG).show();
             String cuentaRecupera  = extras.getString("cuenta_instagram");
-            cuentaInstagram = cuentaRecupera;
+            if (cuentaRecupera!=null && !cuentaRecupera.isEmpty()) {
+                cuentaInstagram = cuentaRecupera;
+            }
         } else {
             Log.i("Main sin"," parametros");
             //Toast.makeText(this,"Sin parametros en main",Toast.LENGTH_LONG).show();
-            if (cuentaInstagram==null) {
+            if (cuentaInstagram==null || cuentaInstagram.isEmpty()) {
                 cuentaInstagram = "ricardo.cossich";
             }
         }

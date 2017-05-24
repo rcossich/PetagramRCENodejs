@@ -7,7 +7,8 @@ package com.example.ricardocossich.petagramrcenodejs.restApi;
 public final class ConstantesRestApi {
 
     // tokens de dos usuarios especificos.
-    public static final String ACCESS_TOKEN = "4868559439.f49691f.e81df5983b2644358b07a19111976c0c"; //con todos los permisos para ricardo.cossich.
+    public static final String ACCESS_TOKEN = "4868559439.f49691f.5258b8f9e984440095204d7452a6f5bb"; //obtenido el 24/05/2017, todos los permisos ricardo.cossich.
+    //public static final String ACCESS_TOKEN = "4868559439.f49691f.e81df5983b2644358b07a19111976c0c"; //con todos los permisos para ricardo.cossich, vencio.
     public static final String ACCESS_TOKEN2 = "4940814501.898b30d.cbe4879f13324d5ea6344f44874fecc8"; //con todos los permisos para ricardoescobar1783.
 
 
@@ -20,8 +21,10 @@ public final class ConstantesRestApi {
 
     public static final String KEY_GET_RECENT_MEDIA_USERID = "users/{userid}/media/recent/";
     public static final String KEY_GET_RECENT_MEDIA_USER   = "users/self/media/recent/";
+    public static final String KEY_GET_RELATIONSHIP        = "users/{userid}/relationship";
     public static final String URL_GET_RECENT_MEDIA_USER   = KEY_GET_RECENT_MEDIA_USER   + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
     public static final String URL_GET_RECENT_MEDIA_USER2  = KEY_GET_RECENT_MEDIA_USERID + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
+    public static final String URL_GET_RELATIONSHIP        = KEY_GET_RELATIONSHIP + KEY_ACCESS_TOKEN + ACCESS_TOKEN;
 
     //https://api.instragram.com/v1/users/search?q=consulta&access_token=ACCESS-TOKEN
     public static final String KEY_USUARIOS[] = {"juan.adeveloper27","ricardoescobar1783","android.devel"};

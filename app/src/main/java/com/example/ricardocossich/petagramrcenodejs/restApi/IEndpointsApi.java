@@ -3,6 +3,7 @@ package com.example.ricardocossich.petagramrcenodejs.restApi;
 import com.example.ricardocossich.petagramrcenodejs.restApi.model.InformacionUsuarioResponse;
 import com.example.ricardocossich.petagramrcenodejs.restApi.model.LikeResponse;
 import com.example.ricardocossich.petagramrcenodejs.restApi.model.MascotaResponse;
+import com.example.ricardocossich.petagramrcenodejs.restApi.model.RelacionResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -36,5 +37,14 @@ public interface IEndpointsApi {
     @FormUrlEncoded
     @POST(ConstantesRestApi.URL_POST_LIKE)
     Call<LikeResponse> postLikeInstagram(@Path("media-id") String id_media_instagram,@Field("access_token") String access_token);
+
+    //para el GET de Follow
+    @GET(ConstantesRestApi.URL_GET_RELATIONSHIP)
+    Call<RelacionResponse> getRelationship(@Path("userid") String usuario_id);
+
+    //para el POST de Follow
+    @FormUrlEncoded
+    @POST(ConstantesRestApi.URL_GET_RELATIONSHIP)
+    Call<RelacionResponse> setRelationShip(@Field("action") String accion, @Path("userid") String usuario_id);
 
 }

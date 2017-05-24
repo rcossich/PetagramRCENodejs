@@ -31,5 +31,9 @@
     <string name="contenido_boton4">Guarda cuenta y actualiza Time Line</string>
     <string name="menu_usuarioTL">Definir usuario para TimeLine</string>
 
+    <string name="opcion1_notificacion">Ver mi perfil</string>
+    <string name="opcion2_notificacion">Seguir en Instagram</string>
+    <string name="opcion3_notificacion">Ver perfil usuario</string>
+
 </resources>
 

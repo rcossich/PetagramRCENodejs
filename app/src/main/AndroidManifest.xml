@@ -78,6 +78,14 @@
         </service>
 
         <activity android:name=".UsuarioTimeLine"></activity>
+
+        <receiver android:name=".ReceptorNotificaciones">
+            <intent-filter>
+                <action android:name="MI_PERFIL"/>
+                <action android:name="SEGUIR_USUARIO"/>
+                <action android:name="SU_PERFIL"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

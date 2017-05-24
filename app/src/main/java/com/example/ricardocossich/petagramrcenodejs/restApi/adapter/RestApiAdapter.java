@@ -5,9 +5,11 @@ import com.example.ricardocossich.petagramrcenodejs.restApi.IEndpointsApi;
 import com.example.ricardocossich.petagramrcenodejs.restApi.deserializer.InformacionUsuarioDeserializador;
 import com.example.ricardocossich.petagramrcenodejs.restApi.deserializer.LikeDeserializador;
 import com.example.ricardocossich.petagramrcenodejs.restApi.deserializer.MascotaDeserializador;
+import com.example.ricardocossich.petagramrcenodejs.restApi.deserializer.RelacionDeserializador;
 import com.example.ricardocossich.petagramrcenodejs.restApi.model.InformacionUsuarioResponse;
 import com.example.ricardocossich.petagramrcenodejs.restApi.model.LikeResponse;
 import com.example.ricardocossich.petagramrcenodejs.restApi.model.MascotaResponse;
+import com.example.ricardocossich.petagramrcenodejs.restApi.model.RelacionResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -53,4 +55,11 @@ public class RestApiAdapter {
         gsonBuilder.registerTypeAdapter(LikeResponse.class, new LikeDeserializador());
         return gsonBuilder.create();
     }
+
+    public Gson construyeGsonDeserializadorRelacion() {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(RelacionResponse.class, new RelacionDeserializador());
+        return gsonBuilder.create();
+    }
+
 }

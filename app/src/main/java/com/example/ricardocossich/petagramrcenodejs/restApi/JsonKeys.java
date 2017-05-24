@@ -28,4 +28,11 @@ public class JsonKeys {
     public static final String TIPO_ERROR                   = "error_type";
     public static final String MENSAJE_ERROR                = "error_message";
     public static final int    CODIGO_OK                    = 200;
+
+    //para la parte de relaciones en instagram.
+    public static final String META_INST                    = "meta";
+    public static final String CODIGO_INST                  = "code";
+    public static final int    CODIGO_INST_OK               = 200;
+    public static final String DATOS                        = "data";
+    public static final String ESTADO                       = "outgoing_status";
 }
