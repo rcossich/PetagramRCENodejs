@@ -90,7 +90,7 @@ public class ReceptorNotificaciones extends BroadcastReceiver{
         //llamar a activity_main pasando parametros
         Intent myIntent = new Intent(context, MainActivity.class); //en luagar de Intent intent = new Intent(this, MainActivity.class);
         myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        usuarioinstagram = MainActivity.cuentaInstagramInvitado //la cuenta definida como secundarioa, es decir la que dio el like.
+        usuarioinstagram = MainActivity.cuentaInstagramInvitado; //la cuenta definida como secundarioa, es decir la que dio el like.
         Log.d("De regreso a Main","pasando "+usuarioinstagram);
         myIntent.putExtra("cuenta_instagram", usuarioinstagram);
         context.startActivity(myIntent);
